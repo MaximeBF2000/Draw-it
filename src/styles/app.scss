@@ -1,0 +1,53 @@
+@import "./config";
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Nunito", sans-serif;
+}
+
+body{
+  @extend .center-v;
+  background-color: $bgc;
+  color: $white;
+  padding: 1rem 0;
+}
+
+h1{
+  margin-bottom: 1rem;
+}
+
+#draw_canvas{
+  background-color: $white;
+  cursor: crosshair;
+}
+
+.options_left{
+  width: 150px;
+  position: absolute;
+  top: 5rem;
+  left: 1rem;
+  background-color: $lightgrey;
+  border-radius: .25rem;
+  padding: .5rem .3rem;
+
+  .option{
+    @extend .center-v;
+    margin-bottom: 1rem;
+
+    input{
+      width: 40%;
+      background-color: transparent;
+      border: none;
+      &[type="number"]{
+        border-bottom: 1px solid grey;
+        text-align: center;
+      }
+    }
+    #save_drawing{
+      text-decoration: none;
+      color: blue;
+    }
+  }
+}

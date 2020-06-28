@@ -1,0 +1,56 @@
+.center-v, .options_left .option, body {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Nunito", sans-serif;
+}
+
+body {
+  background-color: #4b4b4b;
+  color: #fefefe;
+  padding: 1rem 0;
+}
+
+h1 {
+  margin-bottom: 1rem;
+}
+
+#draw_canvas {
+  background-color: #fefefe;
+  cursor: crosshair;
+}
+
+.options_left {
+  width: 150px;
+  position: absolute;
+  top: 5rem;
+  left: 1rem;
+  background-color: lightgrey;
+  border-radius: 0.25rem;
+  padding: 0.5rem 0.3rem;
+}
+.options_left .option {
+  margin-bottom: 1rem;
+}
+.options_left .option input {
+  width: 40%;
+  background-color: transparent;
+  border: none;
+}
+.options_left .option input[type=number] {
+  border-bottom: 1px solid grey;
+  text-align: center;
+}
+.options_left .option #save_drawing {
+  text-decoration: none;
+  color: blue;
+}
+
+/*# sourceMappingURL=/app.a6a4d504.css.map */
