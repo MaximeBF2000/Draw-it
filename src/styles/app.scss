@@ -45,9 +45,11 @@ h1{
         text-align: center;
       }
     }
-    #save_drawing{
+    .btn{
+      all: unset;
       text-decoration: none;
       color: blue;
+      cursor: pointer;
     }
   }
 }

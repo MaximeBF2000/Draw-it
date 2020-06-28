@@ -40,9 +40,14 @@ color_input.addEventListener("input", e => {
   ctx.strokeStyle = e.target.value
 })
 
+// Clear drawing
+function clear_drawing() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height)
+}
+d.querySelector("#clear_drawing").addEventListener("click", clear_drawing)
 
 // Dowload file
-export const download_drawing = function(el) {
+function download_drawing(el) {
   const image = canvas.toDataURL("image/jpg")
   el.href = image
 }

@@ -48,9 +48,11 @@ h1 {
   border-bottom: 1px solid grey;
   text-align: center;
 }
-.options_left .option #save_drawing {
+.options_left .option .btn {
+  all: unset;
   text-decoration: none;
   color: blue;
+  cursor: pointer;
 }
 
 /*# sourceMappingURL=/app.a6a4d504.css.map */
