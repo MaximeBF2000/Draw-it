@@ -1,10 +1,4 @@
-function getMousePosOnCanva(e, canva) {
-  const rect = canva.getBoundingClientRect()
-  return {
-    x: e.clientX - rect.left,
-    y: e.clientY - rect.top
-  }
-}
+import getMousePosOnCanva from "./mousePosCanva"
 
 export default function draw(event, bool, canva, ctx) {
   if(!bool) return

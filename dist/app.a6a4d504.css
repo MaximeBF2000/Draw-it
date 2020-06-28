@@ -48,11 +48,21 @@ h1 {
   border-bottom: 1px solid grey;
   text-align: center;
 }
+.options_left .option #textmode_btn {
+  cursor: pointer;
+  padding: 0 0.5rem;
+  border: solid 1px;
+}
+.options_left .option #textmode_btn.active {
+  background-color: green;
+  color: #fefefe;
+}
 .options_left .option .btn {
   all: unset;
   text-decoration: none;
   color: blue;
   cursor: pointer;
+  margin-bottom: -1rem;
 }
 
 /*# sourceMappingURL=/app.a6a4d504.css.map */

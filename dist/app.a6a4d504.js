@@ -117,13 +117,13 @@ parcelRequire = (function (modules, cache, entry, globalName) {
   }
 
   return newRequire;
-})({"src/modules/draw.js":[function(require,module,exports) {
+})({"src/modules/mousePosCanva.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.default = draw;
+exports.default = getMousePosOnCanva;
 
 function getMousePosOnCanva(e, canva) {
   var rect = canva.getBoundingClientRect();
@@ -132,15 +132,43 @@ function getMousePosOnCanva(e, canva) {
     y: e.clientY - rect.top
   };
 }
+},{}],"src/modules/draw.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = draw;
+
+var _mousePosCanva = _interopRequireDefault(require("./mousePosCanva"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function draw(event, bool, canva, ctx) {
   if (!bool) return;
-  ctx.lineTo(getMousePosOnCanva(event, canva).x, getMousePosOnCanva(event, canva).y);
+  ctx.lineTo((0, _mousePosCanva.default)(event, canva).x, (0, _mousePosCanva.default)(event, canva).y);
   ctx.stroke();
   ctx.beginPath();
-  ctx.moveTo(getMousePosOnCanva(event, canva).x, getMousePosOnCanva(event, canva).y);
+  ctx.moveTo((0, _mousePosCanva.default)(event, canva).x, (0, _mousePosCanva.default)(event, canva).y);
 }
-},{}],"src/modules/utils.js":[function(require,module,exports) {
+},{"./mousePosCanva":"src/modules/mousePosCanva.js"}],"src/modules/write.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = write;
+
+var _mousePosCanva = _interopRequireDefault(require("./mousePosCanva"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function write(event, bool, canva, ctx) {
+  if (!bool) return;
+  var text = prompt("Enter your text here: ");
+  ctx.fillText(text, (0, _mousePosCanva.default)(event, canva).x, (0, _mousePosCanva.default)(event, canva).y);
+}
+},{"./mousePosCanva":"src/modules/mousePosCanva.js"}],"src/modules/utils.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -228,6 +256,8 @@ module.hot.accept(reloadCSS);
 
 var _draw = _interopRequireDefault(require("./modules/draw"));
 
+var _write = _interopRequireDefault(require("./modules/write"));
+
 var _utils = require("./modules/utils");
 
 require("./styles/app.scss");
@@ -238,7 +268,11 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var canvas = _utils.d.querySelector("#draw_canvas");
 
 var lineWidth_input = document.querySelector(".option.linewidth input");
-var color_input = document.querySelector(".option.strokeStyle input"); // Canvas options
+var color_input = document.querySelector(".option.strokeStyle input");
+var fontSize_input = document.querySelector(".option.fontSize input");
+
+var textmode_btn = _utils.d.querySelector("#textmode_btn"); // Canvas options
+
 
 canvas.width = .7 * _utils.w.innerWidth;
 canvas.height = .8 * _utils.w.innerHeight;
@@ -246,10 +280,21 @@ var ctx = canvas.getContext("2d");
 ctx.strokeStyle = color_input.value;
 ctx.lineCap = "round";
 ctx.lineWidth = lineWidth_input.value;
-var is_drawing = false; // Draw events
+var is_drawing = false;
+var is_onTextMode = false;
+ctx.font = fontSize_input.value + "px sans-serif"; // Turn Text Mode on & off
 
+textmode_btn.addEventListener("click", function () {
+  is_onTextMode = !is_onTextMode;
+  textmode_btn.classList.toggle("active");
+}); // Draw events
+
+canvas.addEventListener("click", function (e) {
+  return (0, _write.default)(e, is_onTextMode, canvas, ctx);
+});
 canvas.addEventListener("mousedown", function () {
-  return is_drawing = true;
+  if (is_onTextMode) return;
+  is_drawing = true;
 });
 canvas.addEventListener("mouseup", function () {
   is_drawing = false;
@@ -270,6 +315,9 @@ lineWidth_input.addEventListener("input", function (e) {
 });
 color_input.addEventListener("input", function (e) {
   ctx.strokeStyle = e.target.value;
+});
+fontSize_input.addEventListener("input", function (e) {
+  ctx.font = e.target.value + "px sans-serif";
 }); // Clear drawing
 
 function clear_drawing() {
@@ -287,7 +335,7 @@ function download_drawing(el) {
 _utils.d.querySelector("#save_drawing").addEventListener("click", function (e) {
   return download_drawing(e.target);
 });
-},{"./modules/draw":"src/modules/draw.js","./modules/utils":"src/modules/utils.js","./styles/app.scss":"src/styles/app.scss"}],"../../../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"./modules/draw":"src/modules/draw.js","./modules/write":"src/modules/write.js","./modules/utils":"src/modules/utils.js","./styles/app.scss":"src/styles/app.scss"}],"../../../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -315,7 +363,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "60477" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50403" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
