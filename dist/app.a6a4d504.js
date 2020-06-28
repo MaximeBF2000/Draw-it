@@ -166,7 +166,10 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 function write(event, bool, canva, ctx) {
   if (!bool) return;
   var text = prompt("Enter your text here: ");
-  ctx.fillText(text, (0, _mousePosCanva.default)(event, canva).x, (0, _mousePosCanva.default)(event, canva).y);
+
+  if (text) {
+    ctx.fillText(text, (0, _mousePosCanva.default)(event, canva).x, (0, _mousePosCanva.default)(event, canva).y);
+  }
 }
 },{"./mousePosCanva":"src/modules/mousePosCanva.js"}],"src/modules/utils.js":[function(require,module,exports) {
 "use strict";
@@ -363,7 +366,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50403" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "51823" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
