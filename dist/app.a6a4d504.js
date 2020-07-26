@@ -278,7 +278,7 @@ var textmode_btn = _utils.d.querySelector("#textmode_btn"); // Canvas options
 
 
 canvas.width = .7 * _utils.w.innerWidth;
-canvas.height = .8 * _utils.w.innerHeight;
+canvas.height = .95 * _utils.w.innerHeight;
 var ctx = canvas.getContext("2d");
 ctx.strokeStyle = color_input.value;
 ctx.lineCap = "round";
@@ -366,7 +366,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "51823" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "51364" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

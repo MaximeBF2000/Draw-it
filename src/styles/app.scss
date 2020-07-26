@@ -8,14 +8,25 @@
 }
 
 body{
-  @extend .center-v;
   background-color: $bgc;
   color: $white;
-  padding: 1rem 0;
+  display: flex;
+}
+
+aside{
+  @extend .center-v;
+  background-color: $bgc;
+  padding: 0 1rem;
 }
 
 h1{
-  margin-bottom: 1rem;
+  margin-top: 1rem;
+  margin-bottom: 2em;
+}
+
+.canvas_zone{
+  background-color: $bgc;
+  padding: 2vh;
 }
 
 #draw_canvas{
@@ -24,10 +35,7 @@ h1{
 }
 
 .options_left{
-  width: 150px;
-  position: absolute;
-  top: 5rem;
-  left: 1rem;
+  width: 100%;
   background-color: $lightgrey;
   border-radius: .25rem;
   padding: .5rem .3rem;
@@ -37,7 +45,8 @@ h1{
     margin-bottom: 1rem;
 
     input{
-      width: 40%;
+      width: 100%;
+      min-height: 3rem;
       background-color: transparent;
       border: none;
       &[type="number"]{
@@ -62,5 +71,15 @@ h1{
       cursor: pointer;
       margin-bottom: -1rem;
     }
+  }
+  .buttons{
+    display: flex;
+    flex-direction: row;
+  }
+}
+
+@media screen and (max-width: 700px){
+  body{
+    flex-direction: column-reverse;
   }
 }

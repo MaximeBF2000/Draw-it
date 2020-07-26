@@ -14,7 +14,7 @@ const textmode_btn = d.querySelector("#textmode_btn")
 
 // Canvas options
 canvas.width = .7 * w.innerWidth
-canvas.height = .8 * w.innerHeight
+canvas.height = .95 * w.innerHeight
 const ctx = canvas.getContext("2d")
 ctx.strokeStyle = color_input.value
 ctx.lineCap = "round"

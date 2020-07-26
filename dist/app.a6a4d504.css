@@ -1,4 +1,4 @@
-.center-v, .options_left .option, body {
+.center-v, .options_left .option, aside {
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -15,11 +15,22 @@
 body {
   background-color: #4b4b4b;
   color: #fefefe;
-  padding: 1rem 0;
+  display: flex;
+}
+
+aside {
+  background-color: #4b4b4b;
+  padding: 0 1rem;
 }
 
 h1 {
-  margin-bottom: 1rem;
+  margin-top: 1rem;
+  margin-bottom: 2em;
+}
+
+.canvas_zone {
+  background-color: #4b4b4b;
+  padding: 2vh;
 }
 
 #draw_canvas {
@@ -28,10 +39,7 @@ h1 {
 }
 
 .options_left {
-  width: 150px;
-  position: absolute;
-  top: 5rem;
-  left: 1rem;
+  width: 100%;
   background-color: lightgrey;
   border-radius: 0.25rem;
   padding: 0.5rem 0.3rem;
@@ -40,7 +48,8 @@ h1 {
   margin-bottom: 1rem;
 }
 .options_left .option input {
-  width: 40%;
+  width: 100%;
+  min-height: 3rem;
   background-color: transparent;
   border: none;
 }
@@ -63,6 +72,16 @@ h1 {
   color: blue;
   cursor: pointer;
   margin-bottom: -1rem;
+}
+.options_left .buttons {
+  display: flex;
+  flex-direction: row;
+}
+
+@media screen and (max-width: 700px) {
+  body {
+    flex-direction: column-reverse;
+  }
 }
 
 /*# sourceMappingURL=/app.a6a4d504.css.map */
